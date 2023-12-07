@@ -35,19 +35,13 @@
       <span  class="e54_20">브랜드</span>
       <span  class="e54_21">브랜드</span>
     </div>
+    <div class="maincontents">
     
     <div class="product" th:each="product : ${products}">
     <div class="e54_22"><img th:src="${product.photopath}"></div>
-<!--    <div class="e54_25"></div>-->
-<!--    <div class="e54_26"></div>-->
-   
-    
     <span  class="e59_11"></span><h2 th:text="${product.name}"></h2>
-<!--    <span  class="e59_13">스트럭처 헤드 캡</span>-->
-<!--    <span  class="e59_15">스트럭처 헤드 캡</span>-->
     <span  class="e59_12"><p>가격: ₩<span th:text="${product.price}"></span></p></span>
-<!--    <span  class="e59_14">36,000 원</span>-->
-<!--    <span  class="e59_16">36,000 원</span>-->
+	</div>
 	</div>
   </div>
   <span th:if="${session.loggedInNickname == null}" class="e56_3"><a href ="/logout" style="color: black;">로그인</a></span>

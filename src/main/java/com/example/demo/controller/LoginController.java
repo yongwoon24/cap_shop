@@ -87,36 +87,8 @@ public class LoginController {
 	
 	 @GetMapping("/")
 	    public String index(HttpSession session, Model model) {
-		 List<Product> products = new ArrayList<>();
-	    	
-	    	String loggedInUserId = (String) session.getAttribute("loggedInUserId"); 
-	    	User user = userRepository.findById1(loggedInUserId);
-	    	
-	    	
-	    	Product product1 = new Product();
-			product1.setName("모자1");
-			product1.setDescription("스포츠 테마의 모자");
-			product1.setPrice(28000);
-			product1.setPhotopath("/img/git merge 충돌.PNG");
-			products.add(product1);
-			proR.save(product1);
-			
-			
-			Product product2 = new Product();
-			product2.setName("모자1");
-			product2.setDescription("스포츠 테마의 모자");
-			product2.setPrice(28000);
-			products.add(product2);
-			proR.save(product2);
-			
-			
-			Product product3 = new Product();
-			product3.setName("모자1");
-			product3.setDescription("스포츠 테마의 모자");
-			product3.setPrice(28000);
-			products.add(product3);
-			proR.save(product3);
-	    	//model.addAllAttribute();
+		 	List<Product> products = proR.findAll();
+		 	model.addAttribute("products", products);
 
 	    	return "index";	
 
