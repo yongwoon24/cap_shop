@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.demo.entity.Product;
+
 import com.example.demo.entity.User;
-import com.example.demo.repository.ProductRepository;
 import com.example.demo.repository.UserRepository;
 
 import jakarta.servlet.http.HttpSession;
@@ -26,10 +25,7 @@ import jakarta.servlet.http.HttpSession;
 public class LoginController {
 	 @Autowired
 	 private UserRepository userRepository;
-	
-	 @Autowired
-	 private ProductRepository proR;
-	
+		
 	@GetMapping("/login")
     public String showLoginForm(Model model) {
         model.addAttribute("user", new User());
@@ -37,9 +33,9 @@ public class LoginController {
     }
 	
 	@PostMapping("/login")
-    public String loginUser(@RequestParam String user_id, @RequestParam String password, RedirectAttributes redirectAttributes, HttpSession session) {
+    public String loginUser(@RequestParam String id, @RequestParam String password, RedirectAttributes redirectAttributes, HttpSession session) {
         // 사용자 정보를 데이터베이스에서 조회합니다.
-        List<User> users = userRepository.findById(user_id);
+        List<User> users = userRepository.findById(id);
 
         if (!users.isEmpty()) {
             User user = users.get(0); // 첫 번째 사용자를 선택합니다.
@@ -85,41 +81,6 @@ public class LoginController {
          }
      }
 	
-	 @GetMapping("/")
-	    public String index(HttpSession session, Model model) {
-		 List<Product> products = new ArrayList<>();
-	    	
-	    	String loggedInUserId = (String) session.getAttribute("loggedInUserId"); 
-	    	User user = userRepository.findById1(loggedInUserId);
-	    	
-	    	
-	    	Product product1 = new Product();
-			product1.setName("모자1");
-			product1.setDescription("스포츠 테마의 모자");
-			product1.setPrice(28000);
-			product1.setPhotopath("/img/git merge 충돌.PNG");
-			products.add(product1);
-			proR.save(product1);
-			
-			
-			Product product2 = new Product();
-			product2.setName("모자1");
-			product2.setDescription("스포츠 테마의 모자");
-			product2.setPrice(28000);
-			products.add(product2);
-			proR.save(product2);
-			
-			
-			Product product3 = new Product();
-			product3.setName("모자1");
-			product3.setDescription("스포츠 테마의 모자");
-			product3.setPrice(28000);
-			products.add(product3);
-			proR.save(product3);
-	    	//model.addAllAttribute();
-
-	    	return "index";	
-
-	    }
+	
 
 }
