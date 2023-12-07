@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +26,8 @@ import jakarta.servlet.http.HttpSession;
 public class LoginController {
 	 @Autowired
 	 private UserRepository userRepository;
-	
-	 @Autowired
 	 private ProductRepository proR;
-	
+		
 	@GetMapping("/login")
     public String showLoginForm(Model model) {
         model.addAttribute("user", new User());
@@ -37,9 +35,9 @@ public class LoginController {
     }
 	
 	@PostMapping("/login")
-    public String loginUser(@RequestParam String user_id, @RequestParam String password, RedirectAttributes redirectAttributes, HttpSession session) {
+    public String loginUser(@RequestParam String id, @RequestParam String password, RedirectAttributes redirectAttributes, HttpSession session) {
         // 사용자 정보를 데이터베이스에서 조회합니다.
-        List<User> users = userRepository.findById(user_id);
+        List<User> users = userRepository.findById(id);
 
         if (!users.isEmpty()) {
             User user = users.get(0); // 첫 번째 사용자를 선택합니다.
@@ -84,7 +82,6 @@ public class LoginController {
              return "redirect:/login";
          }
      }
-	
 	 @GetMapping("/")
 	    public String index(HttpSession session, Model model) {
 		 	List<Product> products = proR.findAll();
@@ -93,5 +90,4 @@ public class LoginController {
 	    	return "index";	
 
 	    }
-
 }

@@ -23,10 +23,10 @@
 	
 <div class=e53_2>
   <div class=e54_10>>
-    <div class=e54_11><span  class="e54_12" ><a href = "/cap" style="color: white; font-weight: bold;">캡</a></span>
+    <div class=e54_11><span  class="e54_12" ><a href = "/" style="color: white;">캡</a></span>
     <span  class="e54_13"><a href = "/buckethat" style="color: white">버킷 햇</a></span>
     <span  class="e54_14"><a href = "/vigny" style="color: white">비니</a></span>
-    <span  class="e54_15"><a href = "/headband" style="color: white">헤드밴드</a></span>
+    <span  class="e54_15"><a href = "/headband" style="color: white; font-weight: bold;">헤드밴드</a></span>
     
       <div class="e54_16"></div>
       
@@ -36,12 +36,17 @@
       <span  class="e54_20">브랜드</span>
       <span  class="e54_21">브랜드</span>
     </div>
-    <div class="maincontents">
     
     <div class="product" th:each="product : ${products}">
     <div class="e54_22"><img th:src="${product.photopath}"></div>
+<!--    <div class="e54_25"></div>-->
+<!--    <div class="e54_26"></div>-->
+   
+    
     <span  class="e59_11"></span><h2 th:text="${product.name}"></h2>
+
     <span  class="e59_12"><p>가격: ₩<span th:text="${product.price}"></span></p></span>
+
 	</div>
   </div>
   <span th:if="${session.loggedInNickname == null}" class="e56_3"><a href ="/logout" style="color: black;">로그인</a></span>
