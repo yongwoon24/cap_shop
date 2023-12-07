@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta content="text/html; charset=euc-kr">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>유한캡</title>
+	<style type="text/css">
+
+	</style>
+	<script src="https://kit.fontawesome.com/2636adf573.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" th:href="@{/../css/main.css}" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	
+</head>
+
+<body>
+	
+	
+<div class=e53_2>
+  <div class=e54_10>
+    <div class=e54_11><span  class="e54_12">캡</span>
+    <span  class="e54_13">버킷 햇</span><span  class="e54_14">비니</span>
+    <span  class="e54_15">헤드밴드</span>
+    
+      <div class="e54_16"></div>
+      
+      <div class="e54_17"></div>
+      <span  class="e54_18">브랜드</span>
+      <span  class="e54_19">브랜드</span>
+      <span  class="e54_20">브랜드</span>
+      <span  class="e54_21">브랜드</span>
+    </div>
+    
+    <div class="product" th:each="product : ${products}">
+    <div class="e54_22"><img th:src="${product.photopath}"></div>
+<!--    <div class="e54_25"></div>-->
+<!--    <div class="e54_26"></div>-->
+   
+    
+    <span  class="e59_11"></span><h2 th:text="${product.name}"></h2>
+<!--    <span  class="e59_13">스트럭처 헤드 캡</span>-->
+<!--    <span  class="e59_15">스트럭처 헤드 캡</span>-->
+    <span  class="e59_12"><p>가격: ₩<span th:text="${product.price}"></span></p></span>
+<!--    <span  class="e59_14">36,000 원</span>-->
+<!--    <span  class="e59_16">36,000 원</span>-->
+	</div>
+  </div>
+  <span th:if="${session.loggedInNickname == null}" class="e56_3"><a href ="/logout" style="color: black;">로그인</a></span>
+  <span th:if="${session.loggedInNickname != null}" class="e56_3"><a href ="/logout" style="color: black;">로그아웃</a></span>
+  <span  class="e56_4">아무개</span>
+  <span  class="e60_17">아무개</span>
+  <span  class="e60_18">아무개</span>
+  <div class="e59_8"></div>
+  <div class="e59_9"></div>
+  <div class="e54_9"></div>
+  
+  <span class="e59_10"><a href ="/" style="color: white;">유한캡</a></span>
+</div>
+
+</body>
+
+</html>
