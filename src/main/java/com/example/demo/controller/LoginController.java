@@ -26,6 +26,7 @@ import jakarta.servlet.http.HttpSession;
 public class LoginController {
 	 @Autowired
 	 private UserRepository userRepository;
+	 @Autowired
 	 private ProductRepository proR;
 		
 	@GetMapping("/login")
