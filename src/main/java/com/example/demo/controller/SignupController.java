@@ -32,13 +32,9 @@ public class SignupController {
 	    public String createUser(@ModelAttribute User user, RedirectAttributes redirectAttributes) {
 	    	try {
 	            // 사용자가 존재하지 않을 때만 토큰 생성 및 저장, 이메일 전송
-	           
 	            userRepository.save(user);
-	            
 	            // 인증 링크 생성
-
 	            // 이메일 전송 메소드 호출
-	            
 	            // 성공 시 메시지 설정
 	            redirectAttributes.addFlashAttribute("successMessage", "회원가입이 완료되었습니다!");
 	            return "redirect:/login";

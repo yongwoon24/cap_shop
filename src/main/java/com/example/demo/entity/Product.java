@@ -15,6 +15,8 @@ public class Product {
     private String description;
     private int price;
     private String photopath;
+    private String brand;
+    private String type;
 	public int getId() {
 		return id;
 	}
@@ -44,6 +46,18 @@ public class Product {
 	}
 	public void setPhotopath(String photopath) {
 		this.photopath = photopath;
+	}
+	public String getBrand() {
+		return brand;
+	}
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 	
     
