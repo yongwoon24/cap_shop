@@ -10,7 +10,7 @@
 
 	</style>
 	<script src="https://kit.fontawesome.com/2636adf573.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" th:href="@{/../css/main.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/../css/view.css}" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
@@ -38,11 +38,30 @@
     </div>
     <div class="maincontents">
     
-    <div class="product" th:each="product : ${products}">
-    <div class="e54_22"><a th:href="@{/view/{productId}(productId=${product.id})}"><img th:src="${product.photopath}"></a></div>
-    <span  class="e59_11"></span><a th:href="@{/view/{productId}(productId=${product.id})}"><h2 th:text="${product.name}"></a></h2>
-    <span  class="e59_12"><p>가격: ₩<span th:text="${product.price}"></span></p></span>
+    <div class="product" th:if="${product != null}" th:each="product : ${product}"><img th:src="${product.photopath}">
+   
+<!--    <div class="e73_2"></div>   -->
+    <span  class="e73_3" th:text="${product.name}"></span>
+     <span  class="e73_4" th:text="${product.price}+' 원'"></span>
+     
+     <span  class="e74_5"><img src="/img/별 랭크.png"></span><span  class="enext">(4464)</span>
+     <span  class="e74_6">사이즈</span>
+     <span  class="e74_7">F</span>
+     <span  class="e74_8">수량</span>
+     <span  class="e74_9">배송</span>
+     <span  class="e74_10"><input type="radio" th:text="무료배송" th:value="true" checked="checked"></span>
+     <span  class="e74_11">배송</span>
+     <span  class="e74_12">배송</span>
+     
+     
+<!--    <span  class="e59_11"></span><h2 th:text="${product.name}"></h2>-->
+<!--    <span  class="e59_12"><p>가격: ₩<span th:text="${product.price}"></span></p></span>-->
 	</div>
+  
+     
+     
+  </div>
+    
   </div>
   <span th:if="${session.loggedInNickname == null}" class="e56_3"><a href ="/logout" style="color: black;">로그인</a></span>
   <span th:if="${session.loggedInNickname != null}" class="e56_3"><a href ="/logout" style="color: black;">로그아웃</a></span>
