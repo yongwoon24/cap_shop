@@ -123,7 +123,7 @@ a {
 	height:0px;
 	position:absolute;
 	left:31px;
-	top:441px;
+	top:400px;
 }
 .e54_17 { 
 	border:1px solid rgba(255, 255, 255, 1);
@@ -142,7 +142,7 @@ a {
 }
 .e54_19 { 
 	color:rgba(255, 255, 255, 1);
-	width:70px;
+	width:100px;
 	height:24px;
 	position:absolute;
 	left:31px;
@@ -329,3 +329,12 @@ a {
     box-sizing: border-box;
     text-align: center; /* 텍스트 중앙 정렬 */
 }
+.e54_11 a:hover {
+    background-color: #333; /* 선택한 메뉴에 대한 배경 색상 */
+    color: #fff; /* 선택한 메뉴 텍스트 색상 */
+}
+.product a{
+	color: inherit;
+    text-decoration: none; /* 링크의 밑줄 제거 (선택사항) */
+}
+

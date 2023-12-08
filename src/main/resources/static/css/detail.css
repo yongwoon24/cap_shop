@@ -1,111 +1,3 @@
-
-.login_wrapper { 
-	left:20px;
-	top:100px;
-	background-color: rgb(255, 255, 255);
-	width:550px;
-	height:450px;
-	position:relative;
-	border-radius: 8px;
-	margin:0 auto;
-}
-h1 {
-	position: relative;
-	letter-spacing:10px;
-	color:rgb(0, 0, 0);
-	text-align: center;
-	font-size: 25px;
-	margin-bottom: 30px;
-}
-
-h2 {
-	position: relative;
-	letter-spacing:10px;
-	color:rgb(255, 255, 255);
-	text-align: center;
-	font-size: 55px;
-	margin-bottom: 30px;
-}
-
-a {
-	text-decoration-line: none;
-}
-
-.login_form {
-	position: relative;
-	text-align: center;
-	padding-bottom: 40px;
-	padding-top: 35px;
-}
-
-label {
-	margin-top: 50px;
-	font-size:22px;
-}
-
-label[for="id"] {
-	margin-right: 238px;
-	font-size: 24px;
-	letter-spacing:3px;
-}
-
-label[for="password"] {
-	margin-right: 210px;
-	font-size: 24px;
-	letter-spacing:3px;
-}
-
-input[id="id"], input[id="password"] {
-	padding: 5px;
-	margin-top: 10px;
-	margin-bottom: 20px;
-	width: 300px;
-	height: 35px;
-	border-radius: 5px;
-	font-size: 16px;
-	border-color: rgb(128, 128, 128);
-	transition: color 0.3s ease;;
-}
-
-.default-text {
-    color: rgb(192, 192, 192); /* Set the default text color to be slightly transparent */
-}
-
-.user-input {
-    color: black; /* Set the color for user input text */
-} 
-
-button[id="login_button"] {
-	background-color: rgba(22.000000588595867, 20.000000707805157, 20.000000707805157, 1);
-	margin-top: 10px;
-	margin-bottom: 5px;
-	width: 308px;
-	height: 40px;
-	color: white;
-	border-radius: 5px;
-	font-size: 23px;
-	letter-spacing:5px;
-	border: none;
-}
-
-hr {
-	margin-bottom: 18px;
-	position: relative;
-	width: 410px;
-}
-
-table {
-	margin: 0 auto;
-	text-align: center;
-}
-
-.a_id, .a_ps, .a_signup {
-	color:black;
-}
-
-/*                                                                          로그인 페이지 css*/
-
-
 a {
     text-decoration: none;
 }
@@ -117,17 +9,17 @@ a {
 }
 
 .product img {
-    max-width: 100%; /* 이미지가 컨테이너를 초과하지 않도록 함 */
-    height: auto;
-    /* 제품 이미지에 대한 기타 스타일 추가 */
+    width: 100%;
+    height: 100%;
 }
-
 .product h2 {
-    /* 제품 이름에 대한 스타일 추가 */
+    font-size: 18px;
+    margin-top: 10px;
 }
 
 .product .e59_12 {
-    /* 제품 가격에 대한 스타일 추가 */
+    font-size: 16px;
+    color: #555;
 }
 
 .e53_2 { 
@@ -135,8 +27,8 @@ a {
 }
 .e53_2 { 
 	background-color:rgba(255, 255, 255, 1);
-	width:1920px;
-	height:1080px;
+	width:100%;
+	height:100%;
 	position:absolute;
 }
 .e59_10 { 
@@ -152,19 +44,19 @@ a {
 	letter-spacing:0;
 }
 .e54_10 { 
-	width:1920px;
-	height:880px;
+	width:100%;
+	height:100%;
 	position:absolute;
 	left:0px;
-	top:200px;
+	top:0px;
 }
 .e54_11 { 
 	background-color:rgba(22.31249962002039, 19.52343787997961, 19.52343787997961, 1);
 	width:163px;
-	height:896px;
+	height:100%;
 	position:absolute;
 	left:0px;
-	top:0px;
+	top:200px;
 }
 .e54_12 { 
 	color:rgba(255, 255, 255, 1);
@@ -290,9 +182,7 @@ a {
 .e54_22 { 
 	width:316px;
 	height:316px;
-	position:absolute;
-	left:377px;
-	top:83px;
+	position:relative;
 	background-image:url(images/___1.png);
 	background-repeat:no-repeat;
 	background-size:cover;
@@ -323,7 +213,28 @@ a {
 	background-repeat:no-repeat;
 	background-size:cover;
 }
+.e59_11 { 
+	color:rgba(0, 0, 0, 1);
+	width:200px;
+	height:24px;
+	position:relative;
+	font-family:Alumni Sans Collegiate One;
+	text-align:left;
+	font-size:20px;
+	letter-spacing:0;
+}
 
+
+.e59_12 { 
+	color:rgba(0, 0, 0, 1);
+	width:100px;
+	height:24px;
+	position:relative;
+	font-family:Alumni Sans Collegiate One;
+	text-align:left;
+	font-size:20px;
+	letter-spacing:0;
+}
 
 .e56_3 { 
 	color:rgba(0, 0, 0, 1);
@@ -375,7 +286,7 @@ a {
 }
 .e59_8 { 
 	background-color:rgba(234.81250405311584, 234.81250405311584, 234.81250405311584, 1);
-	width:1920px;
+	width:100%;
 	height:8px;
 	position:absolute;
 	left:0px;
@@ -383,7 +294,7 @@ a {
 }
 .e59_9 { 
 	background-color:rgba(234.81250405311584, 234.81250405311584, 234.81250405311584, 1);
-	width:1920px;
+	width:100%;
 	height:8px;
 	position:absolute;
 	left:0px;
@@ -391,9 +302,100 @@ a {
 }
 .e54_9 { 
 	background-color:rgba(22.000000588595867, 20.000000707805157, 20.000000707805157, 1);
-	width:1920px;
+	width:100%;
 	height:131px;
 	position:absolute;
 	left:0px;
 	top:0px;
+}
+/* maincontents 클래스의 하위에 있는 product 클래스들을 깔끔하게 정렬 */
+.maincontents {
+	left: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 40px; /* 수정된 부분: 모든 제품 간의 간격을 조절합니다. */
+    position: relative;
+    z-index: 1;
+    padding: 20px; /* 제품 간 간격을 조절합니다. 필요에 따라 조절하세요. */
+    top: 200px;
+}
+
+.product {
+    width: calc(25% - 40px); /* 4개의 제품이 한 행에 정렬되도록 계산합니다. */
+    max-width: 400px;
+    margin: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center; /* 텍스트 중앙 정렬 */
+}
+.e54_11 a:hover {
+    background-color: #333; /* 선택한 메뉴에 대한 배경 색상 */
+    color: #fff; /* 선택한 메뉴 텍스트 색상 */
+    font-weight: bold; /* 선택한 메뉴 글꼴 굵게 설정 */
+}
+.proname {
+   width: 700px;
+    position: absolute;
+    right: 52px;
+    font-size: 2rem;
+    text-align: left;
+    font-weight: bold;
+    height: 50px;
+}
+.prodes {
+    font-size: 12px;
+    position: absolute;
+    right: 643px;
+    top: 66px;
+}
+.proprice {
+    position: absolute;
+    right: 628px;
+    top: 106px;
+    font-size: 20px;
+}
+.prophoto {
+    position: absolute;
+    left: 200px;
+    top: 24px;
+}
+.prophoto img{
+	width: 498px;
+    height: 452px;
+}
+.purchase-button{
+	    position: absolute;
+    right: 644px;
+    top: 295px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+.purchase-button a{
+	background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.size{
+	position: absolute;
+    right: 622px;
+    top: 154px;
+}
+.amount{
+	position: absolute;
+    right: 613px;
+    top: 200px;
+}
+.del{
+	position: absolute;
+    right: 615px;
+    top: 248px;
 }

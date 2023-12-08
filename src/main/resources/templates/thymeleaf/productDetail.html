@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta content="text/html; charset=euc-kr">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>유한캡</title>
+	<style type="text/css">
+
+	</style>
+	<script src="https://kit.fontawesome.com/2636adf573.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" th:href="@{/../css/detail.css}" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	
+</head>
+
+<body>
+	
+	
+<div class=e53_2>
+  <div class=e54_10>
+    <div class=e54_11><span  class="e54_12" ><a href = "/" style="color: white;">캡</a></span>
+    <span  class="e54_13"><a href = "/buckethat" style="color: white">버킷 햇</a></span>
+    <span  class="e54_14"><a href = "/vigny" style="color: white; font-weight: bold;">비니</a></span>
+    <span  class="e54_15"><a href = "/headband" style="color: white">헤드밴드</a></span>
+    
+      <div class="e54_16"></div>
+      
+      <div class="e54_17"></div>
+      <span  class="e54_18"><a href = "/nike" style="color: white">나이키</a></span>
+      <span  class="e54_19"><a href = "/adidas" style="color: white">아디다스</a></span>
+      <span  class="e54_20"><a href = "/mlb" style="color: white">MLB</a></span>
+    </div>
+    <div class="maincontents">
+    <div th:each="product : ${product}">
+        <div class="proname" th:text="${product.name}"></div>
+        <div class="prodes" th:text="${product.description}"></div>
+        <div class="proprice" >가격: ₩<span th:text="${product.price}"></span></div>
+        <div class="prophoto" ><img th:src="${product.photopath}" alt="상품 이미지"></div>
+        <!-- Size 선택 -->
+        <div class="size">
+            <label for="size">사이즈:</label>
+            <select id="size" name="size">
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+            </select>
+        </div>
+		<div class="amount">
+            <!-- 수량 선택 -->
+            <label for="quantity">수량:</label>
+            <button onclick="decreaseQuantity()">-</button>
+            <input type="text" id="quantity" name="quantity" value="1" readonly style="width: 30px">
+            <button onclick="increaseQuantity()">+</button>
+        </div>
+        <div class="del">
+        <span  class="e74_9">배송 : </span>
+        <span  class="e74_10"><input type="radio" th:text="무료배송" th:value="true" checked="checked"></span>
+        </div>
+         <div class="purchase-button">
+            <a href="/purchase/${product.id}">구매하기</a>
+          </div>
+    </div>    
+	
+  </div>
+  <span th:if="${session.loggedInNickname == null}" class="e56_3"><a href ="/logout" style="color: black;">로그인</a></span>
+  <span th:if="${session.loggedInNickname != null}" class="e56_3"><a href ="/logout" style="color: black;">로그아웃</a></span>
+  <span  class="e56_4">아무개</span>
+  <span  class="e60_17">아무개</span>
+  <span  class="e60_18">아무개</span>
+  <div class="e59_8"></div>
+  <div class="e59_9"></div>
+  <div class="e54_9"></div>
+  
+  <span class="e59_10"><a href ="/" style="color: white;">유한캡</a></span>
+</div>
+
+ <script>
+        function increaseQuantity() {
+            var quantityInput = document.getElementById('quantity');
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+        }
+
+        function decreaseQuantity() {
+            var quantityInput = document.getElementById('quantity');
+            var newValue = parseInt(quantityInput.value) - 1;
+            quantityInput.value = newValue >= 1 ? newValue : 1;
+        }
+
+        function purchase() {
+            // 선택된 사이즈 및 수량 가져오기
+            var selectedSize = document.getElementById('size').value;
+            var selectedQuantity = document.getElementById('quantity').value;
+
+            // 여기에서 선택된 사이즈와 수량을 사용하여 필요한 작업 수행
+            // 예: 장바구니에 제품 추가, 주문 처리 등
+            alert('선택된 사이즈: ' + selectedSize + ', 수량: ' + selectedQuantity);
+        }
+    </script>
+</body>
+
+</html>

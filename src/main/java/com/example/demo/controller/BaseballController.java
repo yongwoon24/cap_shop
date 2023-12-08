@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.demo.entity.Product;
 import com.example.demo.entity.User;
@@ -15,48 +16,70 @@ import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class BaseballController {
-	/*
-	 * @Autowired private ProductRepository proR;
-	 * 
-	 * @Autowired public UserRepository userR;
-	 * 
-	 * @GetMapping("/") public String index(HttpSession session, Model model) {
-	 * List<Product> products = new ArrayList<>();
-	 * 
-	 * String loggedInUserId = (String) session.getAttribute("loggedInUserId"); User
-	 * user = userR.findById1(loggedInUserId);
-	 * 
-	 * Product product1 = new Product(); product1.setName("모자1");
-	 * product1.setDescription("스포츠 테마의 모자"); product1.setPrice(28000);
-	 * product1.setPhotopath("/img/git merge 충돌.PNG"); products.add(product1);
-	 * proR.save(product1);
-	 * 
-	 * Product product2 = new Product(); product2.setName("모자1");
-	 * product2.setDescription("스포츠 테마의 모자"); product2.setPrice(28000);
-	 * products.add(product2); proR.save(product2);
-	 * 
-	 * Product product3 = new Product(); product3.setName("모자1");
-	 * product3.setDescription("스포츠 테마의 모자"); product3.setPrice(28000);
-	 * products.add(product3); proR.save(product3); // model.addAllAttribute();
-	 * 
-	 * return "index";
-	 * 
-	 * }
-	 * 
-	 * @GetMapping("/buckethat") public String buckethat() {
-	 * 
-	 * return "buckethat"; }
-	 * 
-	 * @GetMapping("/vigny") public String vigny() {
-	 * 
-	 * return "vigny"; }
-	 * 
-	 * @GetMapping("/headband") public String headband() {
-	 * 
-	 * return "headband"; }
-	 */
+
+	@Autowired
+	private ProductRepository proR;
+
+	@GetMapping("/")
+	public String index(Model model) {
+		List<Product> products = proR.findByType("cap");
+		model.addAttribute("products", products);
+		return "index";
+	}
+
+	@GetMapping("/buckethat")
+	public String buckethat(Model model) {
+		List<Product> products = proR.findByType("buckethat");
+		model.addAttribute("products", products);
+		return "buckethat";
+	}
+
+	@GetMapping("/vigny")
+	public String vigny(Model model) {
+		List<Product> products = proR.findByType("vigny");
+		model.addAttribute("products", products);
+		return "vigny";
+	}
+
+	@GetMapping("/headband")
+	public String headband(Model model) {
+		List<Product> products = proR.findByType("headband");
+		model.addAttribute("products", products);
+		return "headband";
+	}
+	@GetMapping("/nike")
+	public String nike(Model model) {
+		List<Product> products = proR.findByBrand("nike");
+		model.addAttribute("products", products);
+		return "nike";
+	}
+	@GetMapping("/adidas")
+	public String adidas(Model model) {
+		List<Product> products = proR.findByBrand("adidas");
+		model.addAttribute("products", products);
+		return "adidas";
+	}
+	@GetMapping("/mlb")
+	public String mlb(Model model) {
+		List<Product> products = proR.findByBrand("mlb");
+		model.addAttribute("products", products);
+		return "mlb";
+	}
+	
+	@GetMapping("/product/{productId}")
+    public String getProductDetail(@PathVariable int productId, Model model) {
+        Product product = proR.findById(productId).orElse(null);
+
+        if (product != null) {
+            model.addAttribute("product", product);
+            return "productDetail";
+        } else {
+            return "redirect:/";
+        }
+    }
 
 }

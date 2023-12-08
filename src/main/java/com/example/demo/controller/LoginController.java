@@ -26,8 +26,7 @@ import jakarta.servlet.http.HttpSession;
 public class LoginController {
 	 @Autowired
 	 private UserRepository userRepository;
-	 @Autowired
-	 private ProductRepository proR;
+	
 		
 	@GetMapping("/login")
     public String showLoginForm(Model model) {
@@ -83,12 +82,4 @@ public class LoginController {
              return "redirect:/login";
          }
      }
-	 @GetMapping("/")
-	    public String index(HttpSession session, Model model) {
-		 	List<Product> products = proR.findAll();
-		 	model.addAttribute("products", products);
-
-	    	return "index";	
-
-	    }
 }
