@@ -62,7 +62,10 @@
         <span  class="e74_10"><input type="radio" th:text="무료배송" th:value="true" checked="checked"></span>
         </div>
          <div class="purchase-button">
-            <a href="/purchase/${product.id}">구매하기</a>
+            <a id="orderLink" th:href="@{/order/{productId}(productId=${product.id})}" onclick="orderClicked()">구매하기</a>
+
+
+
           </div>
     </div>    
 	
@@ -79,28 +82,33 @@
   <span class="e59_10"><a href ="/" style="color: white;">유한캡</a></span>
 </div>
 
- <script>
-        function increaseQuantity() {
-            var quantityInput = document.getElementById('quantity');
-            quantityInput.value = parseInt(quantityInput.value) + 1;
-        }
+<script>
+	
+    function increaseQuantity() {
+        var quantityInput = document.getElementById('quantity');
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+    }
 
-        function decreaseQuantity() {
-            var quantityInput = document.getElementById('quantity');
-            var newValue = parseInt(quantityInput.value) - 1;
-            quantityInput.value = newValue >= 1 ? newValue : 1;
-        }
+    function decreaseQuantity() {
+        var quantityInput = document.getElementById('quantity');
+        var newValue = parseInt(quantityInput.value) - 1;
+        quantityInput.value = newValue >= 1 ? newValue : 1;
+    }
 
-        function purchase() {
-            // 선택된 사이즈 및 수량 가져오기
-            var selectedSize = document.getElementById('size').value;
-            var selectedQuantity = document.getElementById('quantity').value;
+    function orderClicked() {
+        var sizeSelect = document.getElementById('size');
+        var selectedSize = sizeSelect.options[sizeSelect.selectedIndex].value;
 
-            // 여기에서 선택된 사이즈와 수량을 사용하여 필요한 작업 수행
-            // 예: 장바구니에 제품 추가, 주문 처리 등
-            alert('선택된 사이즈: ' + selectedSize + ', 수량: ' + selectedQuantity);
-        }
-    </script>
+        var quantityInput = document.getElementById('quantity');
+        var selectedQuantity = quantityInput.value;
+
+        var productId = document.getElementById('orderLink').getAttribute('data-product-id');
+        
+        // URL에 사이즈와 수량을 추가하여 리다이렉트
+        orderLink.href = orderLink.getAttribute('href') + '?size=' + selectedSize + '&quantity=' + selectedQuantity;
+    }
+
+</script>
 </body>
 
 </html>

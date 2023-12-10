@@ -1,0 +1,176 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta content="text/html; charset=euc-kr">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>유한캡</title>
+	<style type="text/css">
+		.oform label,
+    	.oform select,
+   		.oform input {
+        display: block;
+        margin-bottom: 10px; /* 각 요소 사이의 간격 조절을 위해 추가한 마진 */
+        align-items: center;
+        text-align: center;
+   		}
+   		.proname{
+			font-size: 25px;
+    		font-weight: bold;
+    		    padding-top: 30px;
+		   }
+   		.prodes{
+			font-size: 10px;
+    		padding-bottom: 10px;
+		   }
+		#totalPrice{
+			padding-bottom: 30px;
+		}
+		.order-button {
+        background-color: #4CAF50; /* 초록색 배경색 */
+        color: white; /* 글자색을 흰색으로 설정 */
+        padding: 10px 20px; /* 내부 여백 설정 */
+        border: none; /* 테두리 제거 */
+        border-radius: 5px; /* 모서리를 둥글게 설정 */
+        cursor: pointer; /* 커서 모양을 손가락으로 설정 */
+    }
+    .oform input, select{
+		border-radius: 7px;
+		width: 250px;
+	}
+
+    /* 버튼에 마우스를 올렸을 때의 스타일 */
+    .order-button:hover {
+        background-color: #45a049; /* 어두운 초록색으로 변경 */
+    }
+	</style>
+	<script src="https://kit.fontawesome.com/2636adf573.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" th:href="@{/../css/main.css}" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	
+</head>
+
+<body>
+	
+	
+<div class=e53_2>
+  <div class=e54_10>
+    <div class=e54_11><span  class="e54_12" ><a href = "/" style="color: white; font-weight: bold;">캡</a></span>
+    <span  class="e54_13"><a href = "/buckethat" style="color: white">버킷 햇</a></span>
+    <span  class="e54_14"><a href = "/vigny" style="color: white">비니</a></span>
+    <span  class="e54_15"><a href = "/headband" style="color: white">헤드밴드</a></span>
+    
+      <div class="e54_16"></div>
+      
+      <div class="e54_17"></div>
+      <span  class="e54_18"><a href = "/nike" style="color: white">나이키</a></span>
+      <span  class="e54_19"><a href = "/adidas" style="color: white">아디다스</a></span>
+      <span  class="e54_20"><a href = "/mlb" style="color: white">MLB</a></span>
+    </div>
+    <!-- order.html -->
+
+<div class="maincontents">
+    <div class="order" style="border: 1px;">
+        <h2>주문하기</h2>
+        <div th:each="product : ${product}">
+        <div class="proname" th:text="${product.name}"></div>
+        <div class="prodes" th:text="${product.description}"></div>
+        <div class="prophoto" ><img th:src="${product.photopath}" alt="상품 이미지"></div>
+    	</div>
+        <form class="oform"th:action="@{/order}" method="post">
+            <!-- 주문 정보 입력 폼 -->
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="address">주소</label>
+            <input type="text" id="address" name="address" required>
+
+            <!-- 사이즈 선택 폼 -->
+            <label for="size">사이즈</label>
+            <select id="size" name="size">
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+            </select>
+
+            <!-- 수량 입력 폼 -->
+            <label for="quantity">수량:</label>
+            <input type="number" id="quantity" name="quantity" min="1" required>
+
+            <!-- 추가적인 주문 정보 입력 폼을 필요에 따라 추가하세요 -->
+
+            <!-- productId를 hidden으로 전달 -->
+            <input type="hidden" id="productPrice" th:value="${product.price}">
+            <input type="hidden" id="productId" name="productId" th:value="${productId}">
+			<div id="totalPrice">asdasd</div>
+            <button class="order-button" type="submit">주문 완료</button>
+        </form>
+        
+    </div>
+</div>
+
+  <span th:if="${session.loggedInNickname == null}" class="e56_3"><a href ="/logout" style="color: black;">로그인</a></span>
+  <span th:if="${session.loggedInNickname != null}" class="e56_3"><a href ="/logout" style="color: black;">로그아웃</a></span>
+  <span  class="e56_4">아무개</span>
+  <span  class="e60_17">아무개</span>
+  <span  class="e60_18">아무개</span>
+  <div class="e59_8"></div>
+  <div class="e59_9"></div>
+  <div class="e54_9"></div>
+  
+  <span class="e59_10"><a href ="/" style="color: white;">유한캡</a></span>
+</div>
+
+<!-- order.html -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var urlParams = new URLSearchParams(window.location.search);
+
+        var sizeParam = urlParams.get('size');
+        if (sizeParam) {
+            var sizeSelect = document.getElementById('size');
+            sizeSelect.value = sizeParam;
+        }
+
+        var quantityParam = urlParams.get('quantity');
+        if (quantityParam) {
+            var quantityInput = document.getElementById('quantity');
+            quantityInput.value = quantityParam;
+
+            // URL에서 quantity 파라미터 삭제
+            urlParams.delete('quantity');
+            history.replaceState(null, null, window.location.pathname + '?' + urlParams.toString());
+        }
+
+        updateTotalPrice();
+    });
+
+    function updateTotalPrice() {
+        var quantityInput = document.getElementById('quantity');
+        var pricePerUnit = parseFloat(document.getElementById('productPrice').value);
+
+        if (!isNaN(quantityInput.value) && quantityInput.value >= 1) {
+            var quantity = parseInt(quantityInput.value);
+            var totalPrice = quantity * pricePerUnit;
+
+            document.getElementById('totalPrice').innerText = '총 가격: ' + totalPrice + '원';
+
+            // URL에 새로운 quantity 파라미터 추가
+            urlParams.set('quantity', quantity);
+            history.replaceState(null, null, window.location.pathname + '?' + urlParams.toString());
+        } else {
+            document.getElementById('totalPrice').innerText = '수량을 입력하세요.';
+        }
+    }
+
+    document.getElementById('quantity').addEventListener('input', updateTotalPrice);
+</script>
+
+</body>
+
+</html>
