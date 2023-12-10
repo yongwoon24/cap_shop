@@ -10,6 +10,7 @@ import com.example.demo.entity.Product;
 import com.example.demo.entity.User;
 import com.example.demo.repository.ProductRepository;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.service.BaseballService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -23,56 +24,59 @@ public class BaseballController {
 
 	@Autowired
 	private ProductRepository proR;
+	
+	@Autowired
+	private BaseballService baseS;
 
 	@GetMapping("/")
 	public String index(Model model) {
-		List<Product> products = proR.findByType("cap");
-		model.addAttribute("products", products);
-		return "index";
+		 List<Product> products = baseS.getProductsByType("cap");
+	        model.addAttribute("products", products);
+	        return "index";
 	}
 
 	@GetMapping("/buckethat")
 	public String buckethat(Model model) {
-		List<Product> products = proR.findByType("buckethat");
-		model.addAttribute("products", products);
-		return "buckethat";
+		 List<Product> products = baseS.getProductsByType("buckethat");
+	        model.addAttribute("products", products);
+	        return "buckethat";
 	}
 
 	@GetMapping("/vigny")
 	public String vigny(Model model) {
-		List<Product> products = proR.findByType("vigny");
-		model.addAttribute("products", products);
-		return "vigny";
+		  List<Product> products = baseS.getProductsByType("vigny");
+	        model.addAttribute("products", products);
+	        return "vigny";
 	}
 
 	@GetMapping("/headband")
 	public String headband(Model model) {
-		List<Product> products = proR.findByType("headband");
-		model.addAttribute("products", products);
-		return "headband";
+		List<Product> products = baseS.getProductsByType("headband");
+        model.addAttribute("products", products);
+        return "headband";
 	}
 	@GetMapping("/nike")
 	public String nike(Model model) {
-		List<Product> products = proR.findByBrand("nike");
-		model.addAttribute("products", products);
-		return "nike";
+		 List<Product> products = baseS.getProductsByBrand("nike");
+	        model.addAttribute("products", products);
+	        return "nike";
 	}
 	@GetMapping("/adidas")
 	public String adidas(Model model) {
-		List<Product> products = proR.findByBrand("adidas");
-		model.addAttribute("products", products);
-		return "adidas";
+		  List<Product> products = baseS.getProductsByBrand("adidas");
+	        model.addAttribute("products", products);
+	        return "adidas";
 	}
 	@GetMapping("/mlb")
 	public String mlb(Model model) {
-		List<Product> products = proR.findByBrand("mlb");
-		model.addAttribute("products", products);
-		return "mlb";
+		 List<Product> products = baseS.getProductsByBrand("mlb");
+	        model.addAttribute("products", products);
+	        return "mlb";
 	}
 	
 	@GetMapping("/product/{productId}")
     public String getProductDetail(@PathVariable int productId, Model model) {
-        Product product = proR.findById(productId).orElse(null);
+		Product product = baseS.getProductById(productId);
 
         if (product != null) {
             model.addAttribute("product", product);
