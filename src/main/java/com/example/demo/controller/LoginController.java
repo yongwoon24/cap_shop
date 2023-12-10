@@ -18,9 +18,6 @@ import com.example.demo.repository.UserRepository;
 
 import jakarta.servlet.http.HttpSession;
 
-//import com.example.demo.entity.User;
-//import com.example.demo.repository.UserRepository;
-
 
 @Controller
 public class LoginController {
@@ -41,26 +38,12 @@ public class LoginController {
 
         if (!users.isEmpty()) {
             User user = users.get(0); // 첫 번째 사용자를 선택합니다.
-
-				/* @@@@@@@@@@@@@@@@@@인증 안하고 로그인 가능하게 임시로 바꿨습니다@@@@@@@@@@@@@@@@@@@@@
-				 * if (!user.isEmailVerified()) { // 이메일 인증이 완료되지 않은 상태일 때 처리
-				 * redirectAttributes.addFlashAttribute("errorMessage", "이메일 인증이 완료되지 않았습니다!");
-				 * return "redirect:/login"; // 이메일 인증 실패 시 표시할 페이지 }
-				 */
-
             if (password.equals(user.getPassword())) {
-                // 비밀번호가 일치하는 경우 로그인 성공 처리
-                // 로그인 성공 처리를 수행하고 리다이렉트 또는 페이지 이동을 설정하세요.
-               
-               // 로그인 성공 시 세션에 사용자 정보 저장
                 session.setAttribute("loggedInNickname", user.getNickname());
                 session.setAttribute("loggedInUserId", user.getId());
                 return "redirect:/"; // 로그인 후 이동할 페이지
             }
         }
-
-        // 로그인 실패 처리를 수행하고 리다이렉트 또는 페이지 이동을 설정하세요.
-        // 예: 에러 메시지 표시, 로그인 실패 페이지 이동 등
         redirectAttributes.addFlashAttribute("errorMessage", "아이디(로그인 전용 아이디) 또는 비밀번호를 잘못 입력했습니다.\r\n"
               + "입력하신 내용을 다시 확인해주세요.");
         return "redirect:/login"; // 로그인 실패 시 표시할 페이지
